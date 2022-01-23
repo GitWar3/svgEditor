@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>生成编辑</title>
+    <!-- svg编辑逻辑代码 -->
+    <script src="./src/index.js"></script>
+    <script src="./src/utils.js"></script>
+    <script src="./src/layui.js"></script>
+    <script src="./src/path.js"></script>
+    <script src="./src/rect.js"></script>
+    <script src="./src/circle.js"></script>
+
+    <!-- 全局样式 -->
+    <link href="./state/global/index.css" rel="stylesheet" />
+    <link href="./state/global/edit.css" rel="stylesheet" />
+    <link href="./state/global/toolbar.css" rel="stylesheet" />
+
+    <!-- 阿里巴巴icon -->
+    <link
+      href="./state/icon/font_3135937_96cz7uwuwgh/iconfont.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="color size">
+    <input
+      type="file"
+      name="file"
+      accept="image/png,image/jpg,image/jpeg"
+      id="file"
+      style="display: none"
+    />
+    <div class="headOperation" id="head" style="top: 0">
+      <div class="headOperation-head">
+        <div onclick="methods.repeal()">撤销</div>
+        <div onclick="fileImport()">导入图片</div>
+        <div onclick="methods.generate()">生成</div>
+        <div onclick="preview()" style="left: 320px">预览</div>
+      </div>
+      <div class="headOperation-after" onclick="shrink()">
+        <img
+          id="shrinksvg"
+          src="./state/icon/icon-up.svg"
+          style="width: 30px; height: 30px"
+        />
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div
+        class="iconfont icon-24gl-pointer"
+        title="拖拽"
+        onclick="toolbarMethods(this,'拖拽')"
+      ></div>
+      <div
+        class="iconfont icon-fengexian"
+        title="直线"
+        onclick="toolbarMethods(this,'直线')"
+      ></div>
+      <div
+        class="iconfont icon-juxing"
+        title="矩形"
+        onclick="toolbarMethods(this,'矩形')"
+      ></div>
+      <div
+        class="iconfont icon-24gl-circle"
+        title="圆形"
+        onclick="toolbarMethods(this,'圆形')"
+      ></div>
+    </div>
+
+    <div class="edit-svg">
+      <div class="edit" id="edit">
+        <div id="edit-context">
+          <svg id="mysvg" class="edit-id-svg"></svg>
+          <img id="img" />
+        </div>
+      </div>
+    </div>
+    <!-- layui页面代码 -->
+    <script src="./layui/event.js"></script>
+    <script src="./layui/utils.js"></script>
+    <script>
+      var methods = null;
+      /**
+       * svg编辑功能
+       */
+      function svgEdit() {
+        methods = new svgPutImageData({
+          editElemnt: "edit",
+          svgElement: "mysvg",
+          imgElement: "img",
+          opacity: "0.5",
+        });
+      }
+
+      function created() {
+        svgEdit();
+        webZoom();
+      }
+      created();
+    </script>
+  </body>
+</html>

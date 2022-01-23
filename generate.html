@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>预览</title>
+    <style>
+      body {
+        position: relative;
+      }
+      svg {
+        position: absolute;
+        z-index: 1;
+      }
+      img {
+        position: absolute;
+        z-index: 0;
+      }
+      path {
+        cursor: pointer;
+        stroke: rgba(0, 0, 0, 0);
+        stroke-width: 0;
+        fill: rgba(0, 0, 0, 0);
+      }
+      path:hover {
+        cursor: pointer;
+        stroke: rgba(0, 0, 255, 0.3);
+        stroke-width: 3px;
+        fill: rgba(0, 0, 255, 0.3);
+      }
+      rect {
+        cursor: pointer;
+        stroke: rgba(0, 0, 0, 0);
+        stroke-width: 0;
+        fill: rgba(0, 0, 0, 0);
+      }
+      rect:hover {
+        cursor: pointer;
+        stroke: rgba(0, 0, 255, 0.3);
+        stroke-width: 3px;
+        fill: rgba(0, 0, 255, 0.3);
+      }
+      circle {
+        cursor: pointer;
+        stroke: rgba(0, 0, 0, 0);
+        stroke-width: 0;
+        fill: rgba(0, 0, 0, 0);
+      }
+      circle:hover {
+        cursor: pointer;
+        stroke: rgba(0, 0, 255, 0.3);
+        stroke-width: 3px;
+        fill: rgba(0, 0, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="mysvg"></svg>
+    <img src="" id="img" />
+    <script>
+      var created = function () {
+        document.getElementById("img").src = localStorage.src;
+        eval(localStorage.generate);
+      };
+
+      setTimeout(() => {
+        created();
+      }, 500);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+.toolbar {
+  width: 70px;
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 50px;
+  color: var(--z4);
+  font-size: var(--x6);
+  z-index: 10;
+}
+.toolbar > div {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.toolbar > div:hover {
+  color: var(--z14);
+}
